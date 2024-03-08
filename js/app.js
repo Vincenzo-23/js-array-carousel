@@ -51,8 +51,27 @@ next.addEventListener("click", function(){
 
     //incremento activeItemIndex di 1
     activeItemIndex++;
-    console.log(activeItemIndex)
+   
     //aggiungo la classe active al nuovo elemento
     divItemList[activeItemIndex].classList.add("active");
-    console.log(divItemList[activeItemIndex])
+    
+})
+
+
+//procedo a recuperare dal DOM l'elemento con classe prev tramite query selector
+const prev = document.querySelector(".prev")
+
+//resto all'ascolto del click su questo elemento e faccio si che ad ogni click la classe active verrà assegnata al div precedente
+//(andando quindi a decrementare di 1 l'indice assegnato a divItemList quindi l'activeItemIndex)
+prev.addEventListener("click", function(){
+    console.log("prev Click")
+    //rimuovo la classe active dall'elemento corrente. L'elemento corrente sarà quello che attualmente avrà la classe active
+    divItemList[activeItemIndex].classList.remove("active")
+
+    //decremento activeItemIndex di 1
+    activeItemIndex--;
+    
+    //aggiungo la classe active al nuovo elemento
+    divItemList[activeItemIndex].classList.add("active");
+    
 })

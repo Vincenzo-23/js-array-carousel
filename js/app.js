@@ -7,6 +7,7 @@ const imagesArray = ["./img/01.webp", "./img/02.webp", "./img/03.webp", "./img/0
 const itemsContainerDOMELEMENT = document.querySelector(".items_container")
 
 //inserisco all'interno di questo elemento (itemsContainerDOMELEMENT) le varie immagini
+
     //utilizzo un ciclo for per iterare ogni singolo elemento dell'imagesArray    
 for (let index = 0; index < imagesArray.length; index++){
     
@@ -45,15 +46,30 @@ const next = document.querySelector(".next")
 //resto all'ascolto del click su questo elemento e faccio si che ad ogni click la classe active verrà assegnata al div successivo
 //(andando quindi ad incrementare di 1 l'indice assegnato a divItemList quindi l'activeItemIndex)
 next.addEventListener("click", function(){
-    
-    //rimuovo la classe active dall'elemento corrente. L'elemento corrente sarà quello che attualmente avrà la classe active
-    divItemList[activeItemIndex].classList.remove("active")
 
-    //incremento activeItemIndex di 1
-    activeItemIndex++;
-   
-    //aggiungo la classe active al nuovo elemento
-    divItemList[activeItemIndex].classList.add("active");
+
+    //aggiungo il loop che mi permette di scorrere le immagini all'infinito andando in avanti
+    if (activeItemIndex < 4){
+
+        //rimuovo la classe active dall'elemento corrente. L'elemento corrente sarà quello che attualmente avrà la classe active
+        divItemList[activeItemIndex].classList.remove("active")
+        
+        //incremento activeItemIndex di 1
+        activeItemIndex++;
+        
+        //aggiungo la classe active al nuovo elemento
+        divItemList[activeItemIndex].classList.add("active");
+
+    }else if (activeItemIndex === 4) {
+
+        activeItemIndex = 0
+
+        
+        divItemList[4].classList.remove("active")
+        
+       
+        divItemList[activeItemIndex].classList.add("active");
+    }
     
 })
 
@@ -64,14 +80,29 @@ const prev = document.querySelector(".prev")
 //resto all'ascolto del click su questo elemento e faccio si che ad ogni click la classe active verrà assegnata al div precedente
 //(andando quindi a decrementare di 1 l'indice assegnato a divItemList quindi l'activeItemIndex)
 prev.addEventListener("click", function(){
-    console.log("prev Click")
-    //rimuovo la classe active dall'elemento corrente. L'elemento corrente sarà quello che attualmente avrà la classe active
-    divItemList[activeItemIndex].classList.remove("active")
-
-    //decremento activeItemIndex di 1
-    activeItemIndex--;
     
-    //aggiungo la classe active al nuovo elemento
-    divItemList[activeItemIndex].classList.add("active");
+    //aggiungo il loop che mi permette di scorrere le immagini all'infinito andanto all'indietro
+    if (activeItemIndex > 0){
+
+        //rimuovo la classe active dall'elemento corrente. L'elemento corrente sarà quello che attualmente avrà la classe active
+        divItemList[activeItemIndex].classList.remove("active")
+        
+        //decremento activeItemIndex di 1
+        activeItemIndex--;
+        
+        //aggiungo la classe active al nuovo elemento
+        divItemList[activeItemIndex].classList.add("active");
+
+    }else if (activeItemIndex === 0) {
+
+        activeItemIndex = 4
+
+        
+        divItemList[0].classList.remove("active")
+        
+        
+        divItemList[activeItemIndex].classList.add("active");
+
+    }
     
 })

@@ -36,6 +36,8 @@ const divItemList = document.getElementsByClassName("item") //HTMLCollection che
     //da assegnare come indice al div che riceverà la classe active
 let activeItemIndex = 0;
 
+//dichiaro una variabile che rappresenterà la massima lunghezza dell'indice del nostro array
+const lastIndex = imagesArray.length - 1
   
 divItemList[activeItemIndex].classList.add("active");
     
@@ -49,7 +51,7 @@ next.addEventListener("click", function(){
 
 
     //aggiungo il loop che mi permette di scorrere le immagini all'infinito andando in avanti
-    if (activeItemIndex < 4){
+    if (activeItemIndex < lastIndex){
 
         //rimuovo la classe active dall'elemento corrente. L'elemento corrente sarà quello che attualmente avrà la classe active
         divItemList[activeItemIndex].classList.remove("active")
@@ -60,7 +62,7 @@ next.addEventListener("click", function(){
         //aggiungo la classe active al nuovo elemento
         divItemList[activeItemIndex].classList.add("active");
 
-    }else if (activeItemIndex === 4) {
+    }else if (activeItemIndex === lastIndex) {
 
         activeItemIndex = 0
 
@@ -95,7 +97,7 @@ prev.addEventListener("click", function(){
 
     }else if (activeItemIndex === 0) {
 
-        activeItemIndex = 4
+        activeItemIndex = lastIndex
 
         
         divItemList[0].classList.remove("active")
